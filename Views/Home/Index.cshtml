@@ -1,0 +1,56 @@
+﻿@model TenantViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if(Model != null)
+{
+    @section styles {
+        <link rel="stylesheet" href="~/css/@(Model.Css)" asp-append-version="true" />
+    }
+
+    <h3 class="mt-4">@Model.Name</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:25%">Property</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>@nameof(Model.Id)</td>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <td>@nameof(Model.Identifier)</td>
+                <td>@Model.Identifier</td>
+            </tr>
+            <tr>
+                <td>@nameof(Model.Name)</td>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <td>
+                    @nameof(Model.NFT)
+                </td>
+                <td>
+                    <img src="@Model.NFT" alt="@Model.Name" />
+                </td>
+            </tr>
+        </tbody>
+    
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">No tenant in hostname</h1>
+
+        <p>Make sure to add to /etc/hosts file: <br/><a href="http://0ff4daf.infinifty.local">http://0ff4daf.infinifty.local</a><br/><a href="http://ao41n44.infinifty.local">http://ao41n44.infinifty.local</a></p>
+        <p>Run using 'dotnet run --urls "http://infinifty.local"'</p>
+    </div>
+}
